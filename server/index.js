@@ -46,4 +46,7 @@ const server = app.listen(port, host, (err) => {
   }
 });
 
-setupSocket(server);
+const socketInterface = setupSocket(server);
+
+// TODO: Expose hooks API that uses sockets for comms
+// app.use('/hooks', hookAPI(socketInterface));

@@ -9,4 +9,6 @@ module.exports = (server) => {
    io.on('connection', (socket) => {
       socket.emit('connectionMessage', {msg: 'Socket connection successfully established'});
    });
+
+   return io;
  };
