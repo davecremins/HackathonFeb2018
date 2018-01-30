@@ -18,3 +18,6 @@ compose-destroy:
 
 compose-logs:
 	${DC} logs -f
+
+compose-shell:
+	${DC} exec web bash
