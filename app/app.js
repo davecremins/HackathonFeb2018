@@ -94,14 +94,14 @@ if (!window.Intl) {
   (new Promise((resolve) => {
     resolve(import('intl'));
   }))
-    .then(() => Promise.all([
-      import('intl/locale-data/jsonp/en.js'),
-      import('intl/locale-data/jsonp/de.js'),
-    ]))
-    .then(() => render(translationMessages))
-    .catch((err) => {
-      throw err;
-    });
+  .then(() => Promise.all([
+    import('intl/locale-data/jsonp/en.js'),
+    import('intl/locale-data/jsonp/de.js'),
+  ]))
+  .then(() => render(translationMessages))
+  .catch((err) => {
+    throw err;
+  });
 } else {
   render(translationMessages);
 }
@@ -112,3 +112,6 @@ if (!window.Intl) {
 if (process.env.NODE_ENV === 'production') {
   require('offline-plugin/runtime').install(); // eslint-disable-line global-require
 }
+
+// Socket event management
+require('./configureSocketEvents')();

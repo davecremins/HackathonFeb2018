@@ -10,4 +10,3 @@ module.exports = (server) => {
       socket.emit('connectionMessage', {msg: 'Socket connection successfully established'});
    });
  };
- 
