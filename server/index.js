@@ -10,6 +10,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngrok') : false;
 const resolve = require('path').resolve;
 const setupSocket = require('./middlewares/socketMiddleware');
+const setupWebhooks = require('./hooks/hooks');
 const app = express();
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
@@ -51,5 +52,4 @@ setInterval(() => {
   socketInterface.emit('area:changeDataForTest');
 }, 1500);
 
-// TODO: Expose hooks API that uses sockets for comms
-// app.use('/hooks', hookAPI(socketInterface));
+setupWebhooks(express, app, socketInterface);
