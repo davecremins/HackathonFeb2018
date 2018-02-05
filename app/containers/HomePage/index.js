@@ -13,7 +13,8 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Box } from 'rebass';
 import messages from './messages';
-import AreaChart from '../components/AreaChart';
+import AreaChart from '../../components/AreaChart';
+import ToolBar from '../../components/Toolbar';
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -30,10 +31,10 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
 
     return (
       <Box>
+        <ToolBar />
         <h1>
           <FormattedMessage {...messages.header} />
         </h1>
-        <Box w={1 / 3}>sdasdasd</Box>
 
         <AreaChart data={data} />
       </Box>
