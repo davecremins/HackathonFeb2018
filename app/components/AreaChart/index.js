@@ -8,11 +8,9 @@ import {
   XAxis,
   YAxis } from 'recharts';
 
-const AreaChart = (props) => (
-  <ResponsiveContainer height={props.height}>
-    <ReAreaChart
-      data={props.data}
-    >
+const AreaChart = ({ height, data }) => (
+  <ResponsiveContainer height={height}>
+    <ReAreaChart data={data}>
       <defs>
         <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
           <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
@@ -31,8 +29,7 @@ const AreaChart = (props) => (
       <Area type="monotone" dataKey="pv" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
     </ReAreaChart>
   </ResponsiveContainer>
-  );
-
+);
 
 AreaChart.propTypes = {
   data: PropTypes.array,

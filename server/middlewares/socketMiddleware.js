@@ -1,18 +1,16 @@
-/* eslint-disable global-require */
-
+const socketIO = require('socket.io');
 /**
  * Socket middleware
  */
 module.exports = (server, opts) => {
-   const io = require('socket.io')(server);
+  const io = socketIO(server);
+  io.on('connection', (socket) => {
+    socket.emit('connectionMessage', { msg: 'Socket connection successfully established' });
+  });
 
-   io.on('connection', (socket) => {
-      socket.emit('connectionMessage', {msg: 'Socket connection successfully established'});
-   });
-
-   if(opts.isDev){
+  if (opts.isDev) {
     setInterval(() => { io.emit('area:changeDataForTest'); }, opts.devInterval);
-   }
+  }
 
-   return io;
- };
+  return io;
+};

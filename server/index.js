@@ -29,14 +29,14 @@ const server = app.listen(port, host, (err) => {
   if (err) {
     return logger.error(err.message);
   }
-  
+
   // Connect to ngrok in dev mode
   if (ngrok) {
     ngrok.connect(port, (innerErr, url) => {
       if (innerErr) {
         return logger.error(innerErr);
       }
-      
+
       logger.appStarted(port, prettyHost, url);
     });
   } else {
@@ -44,5 +44,5 @@ const server = app.listen(port, host, (err) => {
   }
 });
 
-const socketInterface = setupSocketMiddleware(server, {isDev: isDev, devInterval: 2000});
+const socketInterface = setupSocketMiddleware(server, { isDev, devInterval: 2000 });
 setupWebhooksMiddleware(app, socketInterface);
