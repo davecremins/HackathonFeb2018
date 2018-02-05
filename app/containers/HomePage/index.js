@@ -16,6 +16,8 @@ import messages from './messages';
 import AreaChart from '../../components/AreaChart';
 import ToolBar from '../../components/Toolbar';
 import TwoLevelPieChart from "../../components/TwoLevelPieChart";
+
+// TODO: Setup a specific room/channel for this component to communicate
 const io = require('socket.io-client');
 const socket = io();
 
