@@ -2,7 +2,7 @@ let webhooksMiddleware = (app, socketInterface) => {
    app.use(require('body-parser').json());
    return (req, res, next) => {
       res.status(204).end();
-      socketInterface.emit('hooks:post', 
+      socketInterface.emit('webhooks:post', 
          {
             category: 'webhook', 
             data: req.body
