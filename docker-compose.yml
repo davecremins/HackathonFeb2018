@@ -1,6 +1,7 @@
 version: '3'
 services:
   web:
+    image: omnibus/react-boilerplate
     build: .
     command: npm start
     volumes:
