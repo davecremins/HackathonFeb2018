@@ -35,44 +35,43 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
     }
   }
 
-  randomNum(){
-    return Math.floor(Math.random() * (800 - 1 + 1)) + 1;
+  randomNum(max){
+    return Math.floor(Math.random() * (max - 1 + 1)) + 1;
   }
 
   modifyRecord(x){
-    x.uv += this.randomNum();
-    x.pv += this.randomNum();
-    x.amt += this.randomNum();
+    x.uv += this.randomNum(x.uv);
+    x.pv += this.randomNum(x.pv);
+    x.amt += this.randomNum(x.amt);
     return x;
-  }
-
-  newData(){
-    const newData = this.state.data.map((x) => {
-      return this.modifyRecord(x);
-    });
-
-    this.setState({
-      data: newData
-    });
   }
 
   addNewRecord(){
     let records = this.state.data.map((x) => { return x });
-    let lastRec = records.pop();
-    lastRec = this.modifyRecord(lastRec);
-    records.push(lastRec);
+    let rec = records.shift();
+    rec = this.modifyRecord(rec);
+    records.push(rec);
     this.setState({
       data: records
     });
   }
-
-  componentDidMount(){
-    socket.on('newData', () => {
-      console.log('newData event received');
-      this.newData();
-      // this.addNewRecord();
+  
+  randomizeData() {
+    const randomData = this.state.data.map((x) => {
+      return this.modifyRecord(x);
+    });
+    this.setState({
+      data: randomData
     });
   }
+
+  componentDidMount(){
+    socket.on('area:changeDataForTest', () => {
+      // this.randomizeData();
+      this.addNewRecord();
+    });
+  }
+
   render() {
     return (
       <Box>
@@ -83,7 +82,6 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
         <Box w={1} p={2}>
           <AreaChart data={this.state.data} />
         </Box>
-        {/* <TwoLevelPieChart /> */}
       </Box>
     );
   }

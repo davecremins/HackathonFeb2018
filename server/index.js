@@ -48,7 +48,7 @@ const server = app.listen(port, host, (err) => {
 
 const socketInterface = setupSocket(server);
 setInterval(() => {
-  socketInterface.emit('newData');
+  socketInterface.emit('area:changeDataForTest');
 }, 1500);
 
 // TODO: Expose hooks API that uses sockets for comms
