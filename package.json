@@ -1,4 +1,4 @@
-  {
+{
   "name": "react-boilerplate",
   "version": "3.5.0",
   "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
@@ -173,6 +173,7 @@
       "compression",
       "cross-env",
       "express",
+      "socket.io",
       "ip",
       "minimist",
       "sanitize.css"
@@ -243,6 +244,7 @@
     "reselect": "3.0.1",
     "sanitize.css": "4.1.0",
     "socket.io": "^2.0.4",
+    "socket.io-client": "^2.0.4",
     "styled-components": "2.0.0",
     "warning": "3.0.0",
     "whatwg-fetch": "2.0.3"
