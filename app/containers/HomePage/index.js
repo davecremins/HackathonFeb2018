@@ -15,6 +15,7 @@ import { Box } from 'rebass';
 import messages from './messages';
 import AreaChart from '../../components/AreaChart';
 import ToolBar from '../../components/Toolbar';
+import TwoLevelPieChart from "../../components/TwoLevelPieChart";
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -37,6 +38,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
         </h1>
 
         <AreaChart data={data} />
+        <TwoLevelPieChart />
       </Box>
     );
   }
