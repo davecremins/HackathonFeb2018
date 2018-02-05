@@ -49,7 +49,7 @@ const server = app.listen(port, host, (err) => {
 const socketInterface = setupSocket(server);
 setInterval(() => {
   socketInterface.emit('newData');
-}, 3000);
+}, 1500);
 
 // TODO: Expose hooks API that uses sockets for comms
 // app.use('/hooks', hookAPI(socketInterface));
