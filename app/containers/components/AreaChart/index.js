@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Area, AreaChart as ReAreaChart, CartesianGrid, Tooltip, XAxis, YAxis } from 'recharts';
 
-const AreaChart = () => (
+const AreaChart = (props) => (
   <ReAreaChart
     width={730}
     height={250}
-    // data={data}
+    data={props.data}
     margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
   >
     <defs>
@@ -27,5 +27,9 @@ const AreaChart = () => (
   </ReAreaChart>
   );
 
+
+AreaChart.propTypes = {
+  data: PropTypes.array,
+};
 
 export default AreaChart;

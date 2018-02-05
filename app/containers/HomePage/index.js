@@ -22,7 +22,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
         <h1>
           <FormattedMessage {...messages.header} />
         </h1>
-
+        <Box w={1 / 3}>sdasdasd</Box>
 
         <AreaChart />
       </Box>
