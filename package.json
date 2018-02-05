@@ -1,4 +1,4 @@
-{
+  {
   "name": "react-boilerplate",
   "version": "3.5.0",
   "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
@@ -235,6 +235,8 @@
     "react-redux": "5.0.5",
     "react-router-dom": "4.1.1",
     "react-router-redux": "5.0.0-alpha.6",
+    "rebass": "^1.0.4",
+    "recharts": "^1.0.0-beta.10",
     "redux": "3.6.0",
     "redux-immutable": "4.0.0",
     "redux-saga": "0.15.3",
