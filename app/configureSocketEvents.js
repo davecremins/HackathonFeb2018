@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const io = require('socket.io-client');
 /**
  * Socket event management

@@ -37,9 +37,19 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
   }
 
   componentDidMount() {
-    socket.on('area:changeDataForTest', () => {
+    socket.emit('channel', {
+      channel: 'component:homepage',
+    });
+
+    socket.on('changeGraphData', () => {
       // this.randomizeData();
       this.addNewRecord();
+    });
+  }
+
+  componentWillUnmount() {
+    socket.emit('leave channel', {
+      channel: 'component:homepage',
     });
   }
 

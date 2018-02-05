@@ -44,5 +44,5 @@ const server = app.listen(port, host, (err) => {
   }
 });
 
-const socketInterface = setupSocketMiddleware(server, { isDev, devInterval: 2000 });
+const socketInterface = setupSocketMiddleware(server, { isDev, devInterval: 2000, defaultChannel: 'component:homepage' });
 setupWebhooksMiddleware(app, socketInterface);
