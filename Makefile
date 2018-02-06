@@ -21,3 +21,5 @@ compose-logs:
 
 compose-shell:
 	${DC} exec web bash
+
+compose-restart: compose-destroy compose-env compose-logs
