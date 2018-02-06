@@ -19,7 +19,7 @@ const MyLink = styled(Link)`
 
 
 const links = [
-  { name: 'Home', path: '/' },
+  { name: 'Overview', path: '/' },
   { name: 'Revenue', path: '/revenue' },
 ];
 
