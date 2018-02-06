@@ -22,7 +22,7 @@ class RevenueAreaChart extends React.Component {
   }
 
   render() {
-    return (<AreaChart data={this.state.data} />);
+    return (<AreaChart {...this.props} />);
   }
 }
 
