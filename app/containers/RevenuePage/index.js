@@ -19,8 +19,21 @@ import reducer from './reducer';
 import saga from './saga';
 import ToolBar from '../../components/Toolbar';
 import RevenueAreaChart from './charts/RevenueAreaChart';
+import withWebSocket from '../../hoc/WebSocket/withWebSocket';
 
 export class RevenuePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
+
+  componentDidMount() {
+    this.props.subscribe('component:homepage', 'changeGraphData', this.handleSomeEvent);
+  }
+
+// eslint-disable-next-line no-unused-vars
+  handleSomeEvent(data) {
+    console.log('Receiving web socket messages, Work in progress');
+  }
+
+
   render() {
     return (
       <Box>
@@ -43,6 +56,7 @@ export class RevenuePage extends React.Component { // eslint-disable-line react/
 
 RevenuePage.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  subscribe: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -64,4 +78,5 @@ export default compose(
   withReducer,
   withSaga,
   withConnect,
+  withWebSocket,
 )(RevenuePage);
