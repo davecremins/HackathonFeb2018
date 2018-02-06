@@ -55,7 +55,6 @@ export class RevenuePage extends React.Component { // eslint-disable-line react/
 }
 
 RevenuePage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   subscribe: PropTypes.func.isRequired,
 };
 
