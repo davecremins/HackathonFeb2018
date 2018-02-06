@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { Box, Flex } from 'rebass';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -17,18 +18,25 @@ import makeSelectRevenuePage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import ToolBar from '../../components/Toolbar';
+import RevenueAreaChart from './charts/RevenueAreaChart';
 
 export class RevenuePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>
+      <Box>
         <Helmet>
           <title>RevenuePage</title>
           <meta name="description" content="Description of RevenuePage" />
         </Helmet>
         <ToolBar />
-        sdasds
-      </div>
+        <Flex mx={-2} align={'center'}>
+          <Box w={1 / 3} px={2}>
+            <RevenueAreaChart />
+          </Box>
+          <Box w={1 / 2} px={2}>
+          </Box>
+        </Flex>
+      </Box>
     );
   }
 }

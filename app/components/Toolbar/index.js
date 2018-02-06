@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Toolbar as RToolBar } from 'rebass';
+import { Box, Toolbar as RToolBar } from 'rebass';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -11,7 +11,10 @@ const MyToolBar = styled(RToolBar)`
 const MyLink = styled(Link)`
   color: white;
   text-decoration: none;
-  border-bottom: ${({ active }) => active ? 'solid 2px white;' : 'None'}
+  
+  &.active {
+    border-bottom: solid 2px white;
+  }  
 `;
 
 
@@ -23,10 +26,14 @@ const links = [
 
 const ToolBar = () => (
   <MyToolBar>
-    {links.map((item) => (
-      <NavLink>
-        <MyLink active={location.pathname === item.path} to={item.path}>{item.name}</MyLink>
-      </NavLink>
+    {links.map((item, index) => (
+      // eslint-disable-next-line react/no-array-index-key
+      <Box p={2} key={`nav-list-${index}`}>
+        <MyLink
+          className={location.pathname === item.path ? 'active' : ''}
+          to={item.path}
+        >{item.name}</MyLink>
+      </Box>
     ))}
   </MyToolBar>
 );
