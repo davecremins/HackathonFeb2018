@@ -87,7 +87,6 @@ export class Overview extends React.Component { // eslint-disable-line react/pre
           <title>Overview</title>
           <meta name="description" content="Description of Overview" />
         </Helmet>
-        <ToolBar />
         <Flex mx={-2} align={'center'}>
           <Box w={1} p={2}>
             <AreaChart data={this.state.data} />
