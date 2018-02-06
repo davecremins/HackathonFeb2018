@@ -18,8 +18,8 @@ const BarChart = ({ height, data }) => (
       <Tooltip />
       <Legend />
       <ReferenceLine y={0} stroke="#000" />
-      <Bar dataKey="pv" fill="#8884d8" stackId="stack" />
-      <Bar dataKey="uv" fill="#82ca9d" stackId="stack" />
+      <Bar dataKey="uv" fill="#B11440" stackId="stack" />
+      <Bar dataKey="pv" fill="#1875AC" stackId="stack" />
     </ReBarChart>
   </ResponsiveContainer>
 );

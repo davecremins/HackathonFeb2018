@@ -55,11 +55,12 @@ export class RevenuePage extends React.Component { // eslint-disable-line react/
 
   render() {
     return (
-      <Box>
+      <Box p={10}>
         <Helmet>
           <title>RevenuePage</title>
           <meta name="description" content="Description of RevenuePage" />
         </Helmet>
+        <h1>Revenue</h1>
         <Flex p={5} mx={-2} wrap>
           <Box w={1 / 2}>
             <RevenueAreaChart data={this.state.data} height={300} />
