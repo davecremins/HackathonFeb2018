@@ -17,10 +17,12 @@ import { Switch, Route } from 'react-router-dom';
 import Overview from 'containers/Overview/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import RevenuePage from 'containers/RevenuePage/Loadable';
+import ToolBar from '../../components/Toolbar';
 
 export default function App() {
   return (
     <div>
+      <ToolBar />
       <Switch>
         <Route exact path="/" component={Overview} />
         <Route exact path="/revenue" component={RevenuePage} />

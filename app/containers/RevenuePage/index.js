@@ -17,7 +17,6 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectRevenuePage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import ToolBar from '../../components/Toolbar';
 import RevenueAreaChart from './charts/RevenueAreaChart';
 import withWebSocket from '../../hoc/WebSocket/withWebSocket';
 import BarChart from '../../components/BarChart';
@@ -61,7 +60,6 @@ export class RevenuePage extends React.Component { // eslint-disable-line react/
           <title>RevenuePage</title>
           <meta name="description" content="Description of RevenuePage" />
         </Helmet>
-        <ToolBar />
         <Flex p={5} mx={-2} wrap>
           <Box w={1 / 2}>
             <RevenueAreaChart data={this.state.data} height={300} />
