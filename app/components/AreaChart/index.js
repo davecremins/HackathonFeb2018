@@ -8,7 +8,7 @@ import {
   XAxis,
   YAxis } from 'recharts';
 
-const AreaChart = ({ height, data }) => (
+const AreaChart = ({ height, data, dataKey }) => (
   <ResponsiveContainer height={height}>
     <ReAreaChart data={data}>
       <defs>
@@ -25,7 +25,7 @@ const AreaChart = ({ height, data }) => (
       <YAxis />
       <CartesianGrid strokeDasharray="3 3" />
       <Tooltip />
-      <Area type="monotone" dataKey="uv" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+      <Area type="monotone" dataKey={dataKey} stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
       <Area type="monotone" dataKey="pv" stroke="#1875AC" fillOpacity={1} fill="url(#colorPv)" />
     </ReAreaChart>
   </ResponsiveContainer>
@@ -34,6 +34,7 @@ const AreaChart = ({ height, data }) => (
 AreaChart.propTypes = {
   data: PropTypes.array,
   height: PropTypes.number,
+  dataKey: PropTypes.string,
 };
 
 AreaChart.defaultProps = {

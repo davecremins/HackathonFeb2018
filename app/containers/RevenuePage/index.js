@@ -63,7 +63,7 @@ export class RevenuePage extends React.Component { // eslint-disable-line react/
         <h1>Revenue</h1>
         <Flex p={5} mx={-2} wrap>
           <Box w={1 / 2}>
-            <RevenueAreaChart data={this.state.data} height={300} />
+            <RevenueAreaChart data={this.state.data} height={300} dataKey={'uv'} />
           </Box>
           <Box p={5} w={1 / 2}>
             <BarChart data={this.state.data} height={300} />
