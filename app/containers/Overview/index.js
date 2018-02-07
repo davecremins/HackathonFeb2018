@@ -14,12 +14,12 @@ import { Box, Flex } from 'rebass';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectOverview from './selectors';
+import makeSelectOverview, { makeSelectSubscriptionsChart } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import ToolBar from '../../components/Toolbar';
 import AreaChart from '../../components/AreaChart';
 import withWebSocket from '../../hoc/WebSocket/withWebSocket';
+import { addSubscription } from './actions';
 
 export class Overview extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -76,8 +76,9 @@ export class Overview extends React.Component { // eslint-disable-line react/pre
 
   // eslint-disable-next-line no-unused-vars
   handleSomeEvent(data) {
-    console.log('Receiving web socket messages in overview');
-    this.addNewRecord();
+    this.props.dispatch(addSubscription(data));
+    // console.log('Receiving web socket messages in overview');
+    // this.addNewRecord();
   }
 
   render() {
@@ -89,7 +90,7 @@ export class Overview extends React.Component { // eslint-disable-line react/pre
         </Helmet>
         <Flex mx={-2} align={'center'}>
           <Box w={1} p={2}>
-            <AreaChart data={this.state.data} />
+            <AreaChart data={this.props.subChart} dataKey={'price'} />
           </Box>
           <Box w={1 / 2} px={2}>
           </Box>
@@ -102,10 +103,12 @@ export class Overview extends React.Component { // eslint-disable-line react/pre
 Overview.propTypes = {
   dispatch: PropTypes.func.isRequired,
   subscribe: PropTypes.func.isRequired,
+  subChart: PropTypes.array,
 };
 
 const mapStateToProps = createStructuredSelector({
   overview: makeSelectOverview(),
+  subChart: makeSelectSubscriptionsChart(),
 });
 
 function mapDispatchToProps(dispatch) {

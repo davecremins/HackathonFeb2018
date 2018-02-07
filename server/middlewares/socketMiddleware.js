@@ -1,5 +1,11 @@
 /* eslint-disable no-console */
 const socketIO = require('socket.io');
+
+
+const days = [
+  'Mon', 'Tues', 'Wed', 'Thurs', 'Fri',
+];
+
 /**
  * Socket middleware
  */
@@ -23,7 +29,16 @@ module.exports = (server, opts) => {
 
   if (opts.isDev) {
     setInterval(
-      () => { io.to(opts.defaultChannel).emit('changeGraphData'); },
+      () => {
+        io.to(opts.defaultChannel).emit(
+        'changeGraphData',
+          {
+            id: '2312',
+            active: true,
+            price: Math.floor(Math.random() * ((400 - 1) + 1)) + 1,
+            created: days[Math.floor(Math.random() * days.length)],
+          });
+      },
       opts.devInterval
     );
   }
