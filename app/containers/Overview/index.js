@@ -17,7 +17,6 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectOverview from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import ToolBar from '../../components/Toolbar';
 import AreaChart from '../../components/AreaChart';
 import withWebSocket from '../../hoc/WebSocket/withWebSocket';
 
