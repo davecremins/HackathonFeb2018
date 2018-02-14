@@ -20,26 +20,46 @@ const makeSelectOverview = () => createSelector(
   (substate) => substate.toJS()
 );
 
+
+const aggregate = (subs, sub) => {
+  const lastSub = subs.find((item) => item.name === sub.name);
+
+  if (subs.length === 0 || typeof lastSub === 'undefined') {
+    subs.push(sub);
+  } else if (lastSub.name === sub.name) {
+    lastSub.price += sub.price;
+  }
+
+  return subs;
+};
+
+const getInitial = () => {
+  const initial = [
+    { name: 'Sun' },
+    { name: 'Mon' },
+    { name: 'Tues' },
+    { name: 'Wed' },
+    { name: 'Thurs' },
+    { name: 'Fri' },
+    { name: 'Sat' },
+  ];
+
+  initial.forEach((item) => {
+    item.price = 0;
+  });
+
+  return initial;
+};
+
 const makeSelectSubscriptionsChart = () => createSelector(
   selectOverviewDomain,
   (state) => state
-    .get('subscriptions').toJS()
-    .map((sub) => ({
-      name: sub.created,
-      ...sub,
-    }))
-    .reduce((subs, sub) => {
-      const lastSub = subs[subs.length - 1];
-
-      if (subs.length === 0 || lastSub.name !== sub.name) {
-        subs.push(sub);
-      } else if (lastSub.name === sub.name) {
-        lastSub.price += sub.price;
-        // lastSub.pv +=pv sub.pv;
-      }
-
-      return subs;
-    }, [])
+      .get('subscriptions').toJS()
+      .map((sub) => ({
+        name: sub.created,
+        ...sub,
+      }))
+      .reduce(aggregate, getInitial())
 );
 
 export default makeSelectOverview;

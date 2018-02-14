@@ -3,7 +3,13 @@ const socketIO = require('socket.io');
 
 
 const days = [
-  'Mon', 'Tues', 'Wed', 'Thurs', 'Fri',
+  'Sun',
+  'Mon',
+  'Tues',
+  'Wed',
+  'Thurs',
+  'Fri',
+  'Sat',
 ];
 
 /**
